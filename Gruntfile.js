@@ -42,7 +42,7 @@ module.exports = function (grunt) {
       },
       heroku: {
         options: {
-            remote: 'git@heroku.com:satel-static.git',
+            remote: 'git@heroku.com:test-frontend.git',
             branch: 'master'
         }
       }
