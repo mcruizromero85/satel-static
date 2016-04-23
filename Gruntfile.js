@@ -19,6 +19,8 @@ module.exports = function (grunt) {
     cdnify: 'grunt-google-cdn'
   });
 
+  grunt.loadNpmTasks('grunt-build-control');
+
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
@@ -30,6 +32,21 @@ module.exports = function (grunt) {
 
     // Project settings
     yeoman: appConfig,
+
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      heroku: {
+        options: {
+            remote: 'git@heroku.com:heroku-app-1985.git',
+            branch: 'master'
+        }
+      }
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -163,7 +180,11 @@ module.exports = function (grunt) {
           src: [
             '.tmp',
             '<%= yeoman.dist %>/{,*/}*',
-            '!<%= yeoman.dist %>/.git{,*/}*'
+            '!<%= yeoman.dist %>/.git{,*/}*',
+            '!<%= yeoman.dist %>/Procfile',
+            '!<%= yeoman.dist %>/package.json',
+            '!<%= yeoman.dist %>/web.js',
+            '!<%= yeoman.dist %>/node_modules'
           ]
         }]
       },
@@ -480,4 +501,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+  grunt.registerTask('deploy', ['buildcontrol']);
+
 };
