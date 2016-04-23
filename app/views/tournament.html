@@ -1,0 +1,52 @@
+  <div class="container text-center">
+    <h2 class="text-primary">{{torneo.titulo}}</h2>
+    <p>
+      <center><a href="#/tournaments/{{torneo.id}}"><img src="{{torneo.urllogo}}" class="img-responsive margin" style="width:100%" alt="Image"></a></center>
+    </p>
+
+    <table class="table" >
+	  <tbody>
+	    <tr class="info">
+	      <td><b>Fecha de creaci&oacute;n</b></td>
+	      <td>{{torneo.created_at | date:"MM/dd/yyyy h:mma"}}</td>
+	    </tr>
+	    <tr class="info">
+	      <td><b>N&uacute;mero de Slots<b></td>
+	      <td>{{torneo.vacantes }}</td>
+	    </tr>
+	    <tr class="info">
+	      <td><b>Periodo de confirmaci&oacute;n(En Minutos)<b></td>
+	      <td>{{torneo.periodo_confirmacion_en_minutos }}</td>
+	    </tr>
+	    <tr class="info">
+	      <td><b>Estado de torneo<b></td>
+	      <td>{{torneo.estado }}</td>
+	    </tr>
+	  </tbody>
+	</table>
+
+	<div class="row text-center">
+	  <div class="col-sm-6">
+	    <center><img src="images/calendario.png" class="img-responsive margin" style="width:80%" alt="Image"></center>
+	    <b>Cierre de inscripci&oacute;n
+		<br/>
+	    {{torneo.cierre_inscripcion | date:"MM/dd/yyyy h:mma"}}</b>	    
+	    <br/>
+	    <p></p>
+	  </div>
+	  <div class="col-sm-6"> 
+	    <br/>
+
+	  	<br/>
+	    <center><img src="images/BolsaDePremios.png" class="img-responsive margin" style="width:80%" alt="Image"></center>	    
+	    <br/>
+	    <br/>
+	    <b>Bolsa de premios:
+	     {{ torneo.monto_auspiciado | currency:"USD $":2 }} </b>	    
+	    <br/>
+	    <p>.</p>      
+	  </div>
+	</div>
+    <button type="button" class="btn btn-primary btn-block" ng-click="inscribir()">Inscribirme</button>
+    </br>
+  </div>
