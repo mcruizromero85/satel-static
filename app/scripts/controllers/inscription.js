@@ -19,4 +19,34 @@ angular.module('ggesportsWebApp')
       console.debug(data);
   	});
 
+  	$scope.inscribir = function(){
+  	  var data = 
+        {
+          "inscripcion": {
+            "battletag": $scope.battletag,
+            "email": $scope.email  
+            }
+        };
+
+      var config = {
+        headers : {
+         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+        }
+      }
+
+      $http.post('http://localhost:3000/inscripciones', data, config)
+        .success(function (data, status, headers, config) {
+          console.debug(data);
+          //$scope.PostDataResponse = data;
+        })
+        .error(function (data, status, header, config) {
+          $scope.ResponseDetails = "Data: " + data +
+            "<hr />status: " + status +
+            "<hr />headers: " + header +
+            "<hr />config: " + config;
+        });
+  	}
+
+  	
+
   });
