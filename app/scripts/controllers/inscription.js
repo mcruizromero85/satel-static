@@ -22,29 +22,22 @@ angular.module('ggesportsWebApp')
   	$scope.inscribir = function(){
   	  var data = 
         {
-          "inscripcion": {
+          "gamer": {
             "battletag": $scope.battletag,
             "email": $scope.email  
             }
         };
+      
+      console.log($scope.review);
+      $http({
+        method: 'POST',
+        url: 'http://localhost:3000/inscripciones',
+        data: data
+      })
+      .success(function(response) {
+        console.debug(response);
+      });
 
-      var config = {
-        headers : {
-         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-        }
-      }
-
-      $http.post('http://localhost:3000/inscripciones', data, config)
-        .success(function (data, status, headers, config) {
-          console.debug(data);
-          //$scope.PostDataResponse = data;
-        })
-        .error(function (data, status, header, config) {
-          $scope.ResponseDetails = "Data: " + data +
-            "<hr />status: " + status +
-            "<hr />headers: " + header +
-            "<hr />config: " + config;
-        });
   	}
 
   	
