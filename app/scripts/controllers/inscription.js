@@ -25,7 +25,11 @@ angular.module('ggesportsWebApp')
           "gamer": {
             "battletag": $scope.battletag,
             "email": $scope.email  
-            }
+            },
+          "sesion": {
+            "fbToken": getCookie('fbToken'),
+            "fbUserId": getCookie('fbUserId')            
+          }
         };
       
       console.log($scope.review);
