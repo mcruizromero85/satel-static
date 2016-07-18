@@ -22,13 +22,14 @@ angular.module('ggesportsWebApp')
   	$scope.inscribir = function(){
   	  var data = 
         {
-          "gamer": {
+          "current_gamer": {
             "battletag": $scope.battletag,
-            "email": $scope.email  
-            },
-          "sesion": {
-            "fbToken": getCookie('fbToken'),
-            "fbUserId": getCookie('fbUserId')            
+            "correo": $scope.email,
+            "facebook_token": getCookie('fbToken'),
+            "facebook_id": getCookie('fbUserId')
+          },
+          "torneo":{
+            "id": $routeParams.torneoId
           }
         };
       
