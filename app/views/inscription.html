@@ -1,22 +1,28 @@
   <div class="container text-center">
     <h2 class="text-primary">{{torneo.titulo}}</h2>
     <br/>
-	<form class="form-horizontal">
-	  <div class="form-group">
+	<form class="form-horizontal" name="myForm">
+	  <div class="form-group" ng-class="{ 'has-error': myForm.email.$invalid && !myForm.email.$error.required, 'has-success': myForm.email.$valid }">
 	    <label for="email" class="col-sm-2 control-label ">Email</label>
 	    <div class="col-sm-10">
-	      <input type="email" class="form-control" id="email" placeholder="Email" ng-model="email">
+	      <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="email" required my-directive-email>
 	    </div>
 	  </div>
-	  <div class="form-group">
+	  <div class="form-group" ng-class="{ 'has-error': myForm.battletag.$invalid && !myForm.battletag.$error.required, 'has-success': myForm.battletag.$valid }" >
 	    <label for="inputPassword3" class="col-sm-2 control-label">Battle tag</label>
 	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="battletag" placeholder="Battle tag" ng-model="battletag">
+	      <input type="text" class="form-control"  name="battletag" id="battletag" placeholder="Battle tag" ng-model="battletag" required my-directive>
 	    </div>
 	  </div>
 	  <div class="form-group">
 	  	<button type="submit" class="btn btn-primary btn-block" ng-click="inscribir()">Inscribirme</button>
 	  </div>
+	  <p>The input's valid state is:</p>
+		<h1>{{myForm.email.$valid}}</h1>
+	  	<p>The input's empty state is:</p>
+	  	<h1>{{myForm.email.$error.required}}</h1>
 	</form>
+
     </br>
+    
   </div>
